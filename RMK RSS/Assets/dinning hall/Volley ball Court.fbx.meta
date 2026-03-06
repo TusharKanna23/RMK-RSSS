@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 43fee73664b1f4446867481738a44e0e
+guid: 8e43252d2ed23e34484db2426970cdb7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 783292147e2cc1e4489f6da620596575, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 6d42c1bae4c494f4286ad572df34ed07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 37deec94fe908514bbc59aa7517a63f7, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: empty-scheme-of-the-volleyball-court-with-1
+    second: {fileID: 2800000, guid: 22767778f19b78046a4e718e874db443, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
