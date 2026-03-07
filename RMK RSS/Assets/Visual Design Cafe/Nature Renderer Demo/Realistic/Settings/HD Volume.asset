@@ -178,12 +178,6 @@ MonoBehaviour:
       customValue: 100
       additiveValue: 0
       multiplyValue: 1
-  sunInitialRotation:
-    m_OverrideState: 0
-    m_Value: -Infinity
-  lockSun:
-    m_OverrideState: 0
-    m_Value: 0
   enableBackplate:
     m_OverrideState: 0
     m_Value: 0
@@ -311,18 +305,6 @@ MonoBehaviour:
   skyAmbientMode:
     m_OverrideState: 1
     m_Value: 1
-  planetRadius:
-    m_OverrideState: 0
-    m_Value: 6378.1
-  renderingSpace:
-    m_OverrideState: 0
-    m_Value: 0
-  centerMode:
-    m_OverrideState: 0
-    m_Value: 0
-  planetCenter:
-    m_OverrideState: 0
-    m_Value: {x: 0, y: -6378.1, z: 0}
   windOrientation:
     m_OverrideState: 0
     m_Value: 0
@@ -332,7 +314,6 @@ MonoBehaviour:
   fogType:
     m_OverrideState: 1
     m_Value: 0
-  m_Version: 1
 --- !u!114 &2112682869544596416
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -452,9 +433,6 @@ MonoBehaviour:
   sliceDistributionUniformity:
     m_OverrideState: 1
     m_Value: 1
-  multipleScatteringIntensity:
-    m_OverrideState: 0
-    m_Value: 0
   m_FogControlMode:
     m_OverrideState: 1
     m_Value: 0
@@ -489,6 +467,12 @@ MonoBehaviour:
   enable:
     m_OverrideState: 1
     m_Value: 1
+  localClouds:
+    m_OverrideState: 0
+    m_Value: 0
+  earthCurvature:
+    m_OverrideState: 0
+    m_Value: 0
   cloudTiling:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1}
@@ -526,9 +510,6 @@ MonoBehaviour:
     dimension: 2
   cloudControl:
     m_OverrideState: 1
-    m_Value: 0
-  cloudSimpleMode:
-    m_OverrideState: 0
     m_Value: 0
   m_CloudPreset:
     m_OverrideState: 1
@@ -685,8 +666,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 2.5
   shapeOffset:
-    m_OverrideState: 1
-    m_Value: {x: 9.91, y: 0, z: 0}
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
   erosionFactor:
     m_OverrideState: 1
     m_Value: 0.5
@@ -696,15 +677,6 @@ MonoBehaviour:
   erosionNoiseType:
     m_OverrideState: 1
     m_Value: 1
-  microErosion:
-    m_OverrideState: 0
-    m_Value: 0
-  microErosionFactor:
-    m_OverrideState: 1
-    m_Value: 0.5
-  microErosionScale:
-    m_OverrideState: 1
-    m_Value: 200
   ambientLightProbeDimmer:
     m_OverrideState: 0
     m_Value: 1
@@ -717,17 +689,17 @@ MonoBehaviour:
   globalWindSpeed:
     m_OverrideState: 0
     m_Value:
-      mode: 1
-      customValue: 100
+      mode: 0
+      customValue: 1
       additiveValue: 0
-      multiplyValue: 1
+      multiplyValue: 0
   orientation:
     m_OverrideState: 0
     m_Value:
-      mode: 1
+      mode: 0
       customValue: 0
       additiveValue: 0
-      multiplyValue: 1
+      multiplyValue: 0
   altitudeDistortion:
     m_OverrideState: 0
     m_Value: 0.5
@@ -761,6 +733,9 @@ MonoBehaviour:
   shadowResolution:
     m_OverrideState: 0
     m_Value: 256
+  shadowPlaneHeightOffset:
+    m_OverrideState: 0
+    m_Value: 0
   shadowDistance:
     m_OverrideState: 0
     m_Value: 8000
@@ -770,10 +745,7 @@ MonoBehaviour:
   shadowOpacityFallback:
     m_OverrideState: 0
     m_Value: 0
-  m_Version: 3
-  localClouds:
-    m_OverrideState: 0
-    m_Value: 0
+  m_Version: 2
   m_ObsoleteWindSpeed:
     m_OverrideState: 0
     m_Value: 1
