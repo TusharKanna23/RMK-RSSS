@@ -4,7 +4,25 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/terrain.unity
+    guid: 7240ec790bfebd44980c5342092dc044
+  - enabled: 0
+    path: Assets/Scenes/healthcarecen.unity
+    guid: 706a781cbcfc9034592a7f8771cb348b
+  - enabled: 0
+    path: Assets/Scenes/halloffame.unity
+    guid: 6dd3da49f56aa5c44a32337a06af9cb3
+  - enabled: 0
+    path: Assets/Scenes/principal block.unity
+    guid: 6243d6b16b189bd42a2276a78d0926cf
+  - enabled: 0
+    path: Assets/Scenes/Storeroom/store.unity
+    guid: 4f258790cf272c74c9c50da56bcd9aa1
+  - enabled: 0
+    path: Assets/Scenes/SSW.unity
+    guid: 8a26ee0f3831d0646b5cd073bfb3e024
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4c85d0f7313bf70468a4b5abdc794d70, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8b778af687e9b9d4bad7111454cf4306, type: 2}
