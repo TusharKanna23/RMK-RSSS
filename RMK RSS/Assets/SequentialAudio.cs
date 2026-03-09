@@ -21,7 +21,7 @@ public class SequentialAudio : MonoBehaviour
 
         // 2. Wait for the first clip to finish OR a specific time
         // If you want to wait for the clip to finish + 5 seconds:
-        yield return new WaitForSeconds(firstClip.length + 5f);
+        yield return new WaitForSeconds(firstClip.length + 3f);
 
         // 3. Play the second audio
         audioSource.clip = secondClip;
