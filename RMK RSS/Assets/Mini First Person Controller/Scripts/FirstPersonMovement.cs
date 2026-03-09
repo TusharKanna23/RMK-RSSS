@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class FirstPersonMovement : MonoBehaviour
 {
@@ -9,54 +10,69 @@ public class FirstPersonMovement : MonoBehaviour
     public bool canRun = true;
     public bool IsRunning { get; private set; }
     public float runSpeed = 9;
-    public KeyCode runningKey = KeyCode.LeftShift;
 
-    [Header("Mouse Look")]
-    public float mouseSensitivity = 2f;
+    [Header("VR Camera")]
     public Transform playerCamera;
-    float xRotation = 0f;
+
+    [Header("Rotation")]
+    public float rotationSpeed = 80f;
 
     Rigidbody rigidbody;
+
+    InputDevice leftController;
+    InputDevice rightController;
+
+    Vector2 leftJoystick;
+    Vector2 rightJoystick;
 
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
-    void Awake()
+    void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Get VR controllers
+        leftController = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        rightController = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
     }
 
     void Update()
     {
-        // Mouse movement
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * 100f * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * 100f * Time.deltaTime;
+        // Read joystick inputs
+        leftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out leftJoystick);
+        rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out rightJoystick);
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
+        // GTA style smooth rotation using right joystick
+        float rotation = rightJoystick.x * rotationSpeed * Time.deltaTime;
+        transform.Rotate(Vector3.up * rotation);
     }
 
     void FixedUpdate()
     {
-        IsRunning = canRun && Input.GetKey(runningKey);
+        IsRunning = canRun;
 
         float targetMovingSpeed = IsRunning ? runSpeed : speed;
+
         if (speedOverrides.Count > 0)
         {
             targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();
         }
 
-        Vector2 targetVelocity = new Vector2(
-            Input.GetAxis("Horizontal") * targetMovingSpeed,
-            Input.GetAxis("Vertical") * targetMovingSpeed
-        );
+        // Movement relative to camera direction
+        Vector3 forward = playerCamera.forward;
+        Vector3 right = playerCamera.right;
 
-        rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
+        forward.y = 0;
+        right.y = 0;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 direction = forward * leftJoystick.y + right * leftJoystick.x;
+
+        Vector3 velocity = direction * targetMovingSpeed;
+
+        rigidbody.velocity = new Vector3(velocity.x, rigidbody.velocity.y, velocity.z);
     }
 }
